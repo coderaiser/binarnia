@@ -175,7 +175,7 @@ test('binarnia: not defined', (t) => {
     const buffer = [0x01, 0x02, 0x03, 0x04];
     
     const fn = () => binarnia(schema, 'BE', buffer);
-    t.throws(fn, /0x00: format: behaviour of type 'super' is not defined/, 'should throw');
+    t.throws(fn, /0x00: format: behaviour of type "super" is not defined/, 'should throw');
     
     t.end();
 });
