@@ -79,6 +79,53 @@ test('binarnia: enum', (t) => {
     t.end();
 });
 
+test('binarnia: bit', (t) => {
+    const schema = [{
+        offset: '0x00',
+        name: 'format',
+        length: 1,
+        type: 'bit',
+        bit: {
+            '0x1': 'MZ',
+            '0x2': 'PE',
+            '0x4': 'ELF',
+        }
+    }];
+    
+    const buffer = [0x03];
+    
+    const result = binarnia(schema, buffer);
+    const expected = {
+        format: ['MZ', 'PE'],
+    };
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
+test('binarnia: bit: direct', (t) => {
+    const schema = [{
+        offset: '0x00',
+        name: 'format',
+        length: 1,
+        type: 'bit',
+        bit: {
+            '0x1': 'MZ',
+            '0x2': 'PE',
+        }
+    }];
+    
+    const buffer = [0x02];
+    
+    const result = binarnia(schema, buffer);
+    const expected = {
+        format: ['PE'],
+    };
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
 test('binarnia: LE', (t) => {
     const schema = [{
         offset: '0x00',

@@ -60,6 +60,30 @@ binarnia(schema, 'BE', array);
 };
 ```
 
+### Bit
+
+```js
+const schema = [{
+    offset: '0x00',
+    name: 'format',
+    length: 1,
+    type: 'bit',
+    bit: {
+        '0x1': 'MZ',
+        '0x2': 'PE',
+        '0x4': 'ELF',
+    }
+}];
+
+const buffer = [0x03];
+
+const result = binarnia(schema, buffer);
+// returns
+{
+    format: ['MZ', 'PE'],
+}
+```
+
 ## Environments
 
 In old `node.js` environments that not fully supports `es2015`, `binarnia` could be used with:
