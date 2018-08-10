@@ -13,51 +13,55 @@ npm i binarnia
 ```js
 const binarnia = require('binarnia');
 const schema = [{
-    offset: '0x00',
-    name: 'format',
-    length: 1,
-    type: 'enum',
-    enum: {
-        '0x22': 'MZ',
-        '0x33': 'PE',
-    }
-}, {
     offset: '0x01',
     name: 'arch',
     length: 1,
-    type: 'array',
-    array: [
-        'x32',
-        'x64',
-    ]
+    type: 'value',
 }];
 
-const buffer = Buffero.from([0x22, 0x01]);
+const buffer = Buffero.from([0x22]);
 
 // endianness = 'LE'
 binarnia(schema, buffer);
 // returns
 {
-    arch: 'x32',
-    format: 'MZ'
+    arch: '0x22',
 };
 
 // directly pass endianness
 binarnia(schema, 'BE', buffer);
 // returns
 {
-    arch: 'x32',
-    format: 'MZ'
+    arch: '0x22',
 };
 
-const array = [0x22, 0x01];
+const array = [0x22];
 // works with array as well
+
 binarnia(schema, 'BE', array);
 // returns
 {
-    arch: 'x32',
-    format: 'MZ'
+    arch: 'x22',
 };
+```
+
+### Value
+
+```js
+const schema = [{
+    offset: '0x00',
+    name: 'format',
+    length: 1,
+    type: 'value',
+}];
+
+const buffer = [0x03];
+
+const result = binarnia(schema, buffer);
+// returns
+{
+    format: '0x03'
+}
 ```
 
 ### Bit
@@ -82,6 +86,52 @@ const result = binarnia(schema, buffer);
 {
     format: ['MZ', 'PE'],
 }
+```
+
+### Enum
+
+const binarnia = require('binarnia');
+const schema = [{
+    offset: '0x00',
+    name: 'format',
+    length: 1,
+    type: 'enum',
+    enum: {
+        '0x22': 'MZ',
+        '0x33': 'PE',
+    }
+}];
+
+const buffer = Buffero.from([0x22, 0x01]);
+
+binarnia(schema, buffer);
+// returns
+{
+    format: 'MZ'
+};
+
+### Array
+
+```js
+const binarnia = require('binarnia');
+const schema = [{
+    offset: '0x01',
+    name: 'arch',
+    length: 1,
+    type: 'array',
+    array: [
+        'x32',
+        'x64',
+    ]
+}];
+
+const buffer = Buffero.from([0x22, 0x01]);
+
+binarnia(schema, buffer);
+// returns
+{
+    arch: 'x32',
+};
 ```
 
 ## Environments
