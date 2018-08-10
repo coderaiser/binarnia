@@ -14,18 +14,18 @@ npm i binarnia
 const binarnia = require('binarnia');
 const schema = [{
     offset: '0x00',
-    name: "format",
+    name: 'format',
     length: 1,
-    type: "enum",
+    type: 'enum',
     enum: {
         '0x22': 'MZ',
         '0x33': 'PE',
     }
 }, {
     offset: '0x01',
-    name: "arch",
+    name: 'arch',
     length: 1,
-    type: "array",
+    type: 'array',
     array: [
         'x32',
         'x64',
@@ -76,8 +76,8 @@ MIT
 [BuildStatusIMGURL]:        https://img.shields.io/travis/coderaiser/binarnia/master.svg?style=flat&longCache=true
 [DependencyStatusIMGURL]:   https://img.shields.io/david/coderaiser/binarnia.svg?style=flat&longCache=true
 [LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat&longCache=true
-[NPMURL]:                   https://npmjs.org/package/binarnia "npm"
-[BuildStatusURL]:           https://travis-ci.org/coderaiser/binarnia  "Build Status"
-[DependencyStatusURL]:      https://david-dm.org/coderaiser/binarnia "Dependency Status"
-[LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
+[NPMURL]:                   https://npmjs.org/package/binarnia 'npm'
+[BuildStatusURL]:           https://travis-ci.org/coderaiser/binarnia  'Build Status'
+[DependencyStatusURL]:      https://david-dm.org/coderaiser/binarnia 'Dependency Status'
+[LicenseURL]:               https://tldrlegal.com/license/mit-license 'MIT License'
 
