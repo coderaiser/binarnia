@@ -17,9 +17,9 @@ test('binarnia: no buffer', (t) => {
 test('binarnia: value', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 1,
-        type: "value",
+        type: 'value',
     }];
     
     const buffer = [0x33];
@@ -36,9 +36,9 @@ test('binarnia: value', (t) => {
 test('binarnia: array', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 1,
-        type: "array",
+        type: 'array',
         array: [
             'MZ',
             'PE',
@@ -59,9 +59,9 @@ test('binarnia: array', (t) => {
 test('binarnia: enum', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 1,
-        type: "enum",
+        type: 'enum',
         enum: {
             '0x22': 'MZ',
             '0x33': 'PE',
@@ -129,9 +129,9 @@ test('binarnia: bit: direct', (t) => {
 test('binarnia: LE', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 4,
-        type: "value",
+        type: 'value',
     }];
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
@@ -148,9 +148,9 @@ test('binarnia: LE', (t) => {
 test('binarnia: BE', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 4,
-        type: "value",
+        type: 'value',
     }];
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
@@ -167,15 +167,15 @@ test('binarnia: BE', (t) => {
 test('binarnia: not defined', (t) => {
     const schema = [{
         offset: '0x00',
-        name: "format",
+        name: 'format',
         length: 4,
-        type: "super",
+        type: 'super',
     }];
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
     
     const fn = () => binarnia(schema, 'BE', buffer);
-    t.throws(fn, /0x00: format: behaviour of type "super" is not defined/, 'should throw');
+    t.throws(fn, /0x00: format: behaviour of type 'super' is not defined/, 'should throw');
     
     t.end();
 });
