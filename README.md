@@ -90,6 +90,7 @@ const result = binarnia(schema, buffer);
 
 ### Enum
 
+```js
 const binarnia = require('binarnia');
 const schema = [{
     offset: '0x00',
@@ -109,6 +110,7 @@ binarnia(schema, buffer);
 {
     format: 'MZ'
 };
+```
 
 ### Array
 
