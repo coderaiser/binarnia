@@ -1,4 +1,4 @@
-# Binarnia [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
+# Binarnia [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL] [CoverageIMGURL]][CoverageURL]
 
 Parse binary buffer to json according to schema.
 
@@ -80,4 +80,7 @@ MIT
 [BuildStatusURL]:           https://travis-ci.org/coderaiser/binarnia  'Build Status'
 [DependencyStatusURL]:      https://david-dm.org/coderaiser/binarnia 'Dependency Status'
 [LicenseURL]:               https://tldrlegal.com/license/mit-license 'MIT License'
+
+[CoverageURL]:              https://coveralls.io/github/coderaiser/binarnia?branch=master
+[CoverageIMGURL]:           https://coveralls.io/repos/coderaiser/binarnia/badge.svg?branch=master&service=github
 
