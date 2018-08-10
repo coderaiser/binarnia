@@ -1,0 +1,54 @@
+{
+  "name": "binarnia",
+  "version": "1.0.0",
+  "description": "parse binary buffer to json according to schema",
+  "main": "lib/binarnia.js",
+  "scripts": {
+    "test": "tape test/*.js",
+    "coverage": "nyc npm test",
+    "lint": "eslint lib test",
+    "report": "nyc report --reporter=text-lcov | coveralls",
+    "build": "redrun clean 6to5 legacy:*",
+    "6to5": "babel -d legacy/lib lib",
+    "wisdom": "npm run build",
+    "clean": "rimraf legacy/*",
+    "watcher": "nodemon -w test -w lib --exec",
+    "watch:test": "npm run watcher -- npm test",
+    "watch:lint": "npm run watcher -- 'npm run lint'",
+    "watch:tape": "nodemon -w test -w lib --exec tape",
+    "watch:coverage:base": "npm run watcher -- nyc npm test",
+    "watch:coverage:tape": "npm run watcher -- nyc tape",
+    "watch:coverage": "redrun watch:coverage:base",
+    "legacy:index": "echo \"module.exports = require('./lib/binarnia');\" > legacy/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coderaiser/binarnia.git"
+  },
+  "keywords": [
+    "read",
+    "uint",
+    "buffer"
+  ],
+  "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderaiser/binarnia/issues"
+  },
+  "homepage": "https://github.com/coderaiser/binarnia",
+  "devDependencies": {
+    "babel-cli": "^6.1.1",
+    "babel-preset-env": "^1.6.1",
+    "coveralls": "^3.0.0",
+    "eslint": "^5.0.0",
+    "nodemon": "^1.11.0",
+    "nyc": "^12.0.0",
+    "redrun": "^6.0.0",
+    "rimraf": "^2.4.3",
+    "tape": "^4.2.0"
+  },
+  "dependencies": {
+    "currify": "^2.0.6",
+    "read-uint": "^1.1.0"
+  }
+}
