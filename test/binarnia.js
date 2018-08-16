@@ -79,6 +79,29 @@ test('binarnia: enum', (t) => {
     t.end();
 });
 
+test('binarnia: enum: not found', (t) => {
+    const schema = [{
+        offset: '0x00',
+        name: 'format',
+        length: 1,
+        type: 'enum',
+        enum: {
+            '0x22': 'MZ',
+            '0x33': 'PE',
+        }
+    }];
+    
+    const buffer = [0x44];
+    
+    const result = binarnia(schema, buffer);
+    const expected = {
+        format: '0x44'
+    };
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
 test('binarnia: bit', (t) => {
     const schema = [{
         offset: '0x00',
