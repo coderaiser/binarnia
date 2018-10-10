@@ -48,7 +48,7 @@
     "tape": "^4.2.0"
   },
   "dependencies": {
-    "currify": "^2.0.6",
+    "currify": "^3.0.0",
     "read-uint": "^1.1.0"
   }
 }
