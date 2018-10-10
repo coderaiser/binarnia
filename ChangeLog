@@ -1,3 +1,11 @@
+2018.10.10, v1.1.2
+
+feature:
+- (package) redrun v7.0.2
+- (package) nyc v13.0.1
+- (package) currify v3.0.0
+
+
 2018.08.16, v1.1.1
 
 fix:
