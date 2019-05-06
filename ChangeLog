@@ -1,3 +1,11 @@
+2019.05.06, v1.2.0
+
+feature:
+- (binarina) add String support
+- (package) nyc v14.1.0
+- (package) redrun -> madrun
+
+
 2018.10.10, v1.1.2
 
 feature:
