@@ -33,6 +33,25 @@ test('binarnia: value', (t) => {
     t.end();
 });
 
+test('binarnia: string', (t) => {
+    const schema = [{
+        offset: '0x00',
+        name: 'message',
+        length: 5,
+        type: 'string',
+    }];
+    
+    const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
+    
+    const result = binarnia(schema, 'BE', buffer);
+    const expected = {
+        message: 'hello'
+    };
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
 test('binarnia: array', (t) => {
     const schema = [{
         offset: '0x00',

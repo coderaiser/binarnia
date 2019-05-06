@@ -57,10 +57,28 @@ const schema = [{
 
 const buffer = [0x03];
 
-const result = binarnia(schema, buffer);
+binarnia(schema, buffer);
 // returns
 {
     format: '0x03'
+}
+```
+
+### String
+
+```js
+const schema = [{
+    offset: '0x00',
+    name: 'message',
+    length: 5,
+    type: 'string',
+}];
+
+const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
+
+binarnia(schema, 'BE', buffer);
+{
+    message: 'hello'
 }
 ```
 
