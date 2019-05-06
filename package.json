@@ -53,5 +53,8 @@
   "dependencies": {
     "currify": "^3.0.0",
     "read-uint": "^1.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
