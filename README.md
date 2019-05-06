@@ -19,7 +19,7 @@ const schema = [{
     type: 'value',
 }];
 
-const buffer = Buffero.from([0x22]);
+const buffer = Buffer.from([0x22]);
 
 // endianness = 'LE'
 binarnia(schema, buffer);
