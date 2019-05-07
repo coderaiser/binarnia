@@ -1,22 +1,44 @@
 'use strict';
 
 const test = require('supertape');
+const tryCatch = require('try-catch');
 const binarnia = require('..');
 
 test('binarnia: no args', (t) => {
-    t.throws(binarnia, /schema should be an array!/, 'should throw when no args');
+    const [e] = tryCatch(binarnia);
+    
+    t.equal(e.message, 'options should be an object!', 'should throw when no options');
+    t.end();
+});
+
+test('binarnia: no schema', (t) => {
+    const [e] = tryCatch(binarnia, {});
+    
+    t.equal(e.message, 'schema should be an array!', 'should throw when no args');
+    t.end();
+});
+
+test('binarnia: bad offset', (t) => {
+    const [e] = tryCatch(binarnia, {
+        offset: {}
+    });
+    
+    t.equal(e.message, 'offset should be number or string!', 'should throw when no args');
     t.end();
 });
 
 test('binarnia: no buffer', (t) => {
-    const fn = () => binarnia([]);
-    t.throws(fn, /buffer should be buffer or an array!/, 'should throw when no buffer');
+    const schema = [];
+    const [e] = tryCatch(binarnia, {
+        schema
+    });
+    
+    t.equal(e.message, 'buffer should be buffer or an array!', 'should throw when no buffer');
     t.end();
 });
 
 test('binarnia: value', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'value',
@@ -24,7 +46,7 @@ test('binarnia: value', (t) => {
     
     const buffer = [0x33];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: '0x33'
     };
@@ -35,7 +57,6 @@ test('binarnia: value', (t) => {
 
 test('binarnia: string', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'message',
         length: 5,
         type: 'string',
@@ -43,7 +64,12 @@ test('binarnia: string', (t) => {
     
     const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
     
-    const result = binarnia(schema, 'BE', buffer);
+    const result = binarnia({
+        schema,
+        endian: 'BE',
+        buffer,
+    });
+    
     const expected = {
         message: 'hello'
     };
@@ -54,7 +80,6 @@ test('binarnia: string', (t) => {
 
 test('binarnia: string: LE', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'message',
         length: 5,
         type: 'string',
@@ -62,7 +87,11 @@ test('binarnia: string: LE', (t) => {
     
     const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
     
-    const result = binarnia(schema, 'LE', buffer);
+    const result = binarnia({
+        schema,
+        buffer
+    });
+    
     const expected = {
         message: 'hello'
     };
@@ -73,7 +102,6 @@ test('binarnia: string: LE', (t) => {
 
 test('binarnia: array', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'array',
@@ -85,7 +113,7 @@ test('binarnia: array', (t) => {
     
     const buffer = [0x00];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: 'MZ'
     };
@@ -96,7 +124,6 @@ test('binarnia: array', (t) => {
 
 test('binarnia: enum', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'enum',
@@ -108,7 +135,7 @@ test('binarnia: enum', (t) => {
     
     const buffer = [0x22];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: 'MZ'
     };
@@ -119,7 +146,6 @@ test('binarnia: enum', (t) => {
 
 test('binarnia: enum: not found', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'enum',
@@ -131,7 +157,7 @@ test('binarnia: enum: not found', (t) => {
     
     const buffer = [0x44];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: '0x44'
     };
@@ -142,7 +168,6 @@ test('binarnia: enum: not found', (t) => {
 
 test('binarnia: bit', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'bit',
@@ -155,7 +180,7 @@ test('binarnia: bit', (t) => {
     
     const buffer = [0x03];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: ['MZ', 'PE'],
     };
@@ -166,7 +191,6 @@ test('binarnia: bit', (t) => {
 
 test('binarnia: bit: direct', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 1,
         type: 'bit',
@@ -178,7 +202,7 @@ test('binarnia: bit: direct', (t) => {
     
     const buffer = [0x02];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: ['PE'],
     };
@@ -189,7 +213,6 @@ test('binarnia: bit: direct', (t) => {
 
 test('binarnia: LE', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 4,
         type: 'value',
@@ -197,7 +220,7 @@ test('binarnia: LE', (t) => {
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
     
-    const result = binarnia(schema, buffer);
+    const result = binarnia({schema, buffer});
     const expected = {
         format: '0x4030201'
     };
@@ -208,7 +231,6 @@ test('binarnia: LE', (t) => {
 
 test('binarnia: BE', (t) => {
     const schema = [{
-        offset: '0x00',
         name: 'format',
         length: 4,
         type: 'value',
@@ -216,7 +238,12 @@ test('binarnia: BE', (t) => {
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
     
-    const result = binarnia(schema, 'BE', buffer);
+    const result = binarnia({
+        schema,
+        endian: 'BE',
+        buffer
+    });
+    
     const expected = {
         format: '0x1020304'
     };
@@ -227,7 +254,7 @@ test('binarnia: BE', (t) => {
 
 test('binarnia: not defined', (t) => {
     const schema = [{
-        offset: '0x00',
+        offset: '0x0',
         name: 'format',
         length: 4,
         type: 'super',
@@ -235,8 +262,13 @@ test('binarnia: not defined', (t) => {
     
     const buffer = [0x01, 0x02, 0x03, 0x04];
     
-    const fn = () => binarnia(schema, 'BE', buffer);
-    t.throws(fn, /0x00: format: behaviour of type "super" is not defined/, 'should throw');
+    const fn = () => binarnia({
+        schema,
+        buffer,
+        endian: 'BE',
+    });
     
+    t.throws(fn, /0x0: format: behaviour of type "super" is not defined/, 'should throw');
     t.end();
 });
+

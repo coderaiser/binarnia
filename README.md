@@ -22,14 +22,18 @@ const schema = [{
 const buffer = Buffer.from([0x22]);
 
 // endianness = 'LE'
-binarnia(schema, buffer);
+binarnia({schema, buffer});
 // returns
 {
     arch: '0x22',
 };
 
 // directly pass endianness
-binarnia(schema, 'BE', buffer);
+binarnia({
+    schema,
+    endian: 'BE',
+    buffer,
+});
 // returns
 {
     arch: '0x22',
@@ -38,7 +42,11 @@ binarnia(schema, 'BE', buffer);
 const array = [0x22];
 // works with array as well
 
-binarnia(schema, 'BE', array);
+binarnia({
+    schema,
+    endian: 'BE',
+    buffer: array
+});
 // returns
 {
     arch: 'x22',
@@ -57,7 +65,7 @@ const schema = [{
 
 const buffer = [0x03];
 
-binarnia(schema, buffer);
+binarnia({schema, buffer});
 // returns
 {
     format: '0x03'
@@ -76,7 +84,12 @@ const schema = [{
 
 const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
 
-binarnia(schema, 'BE', buffer);
+binarnia({
+    schema,
+    endian: 'BE',
+    buffer
+});
+// returns
 {
     message: 'hello'
 }
@@ -86,7 +99,6 @@ binarnia(schema, 'BE', buffer);
 
 ```js
 const schema = [{
-    offset: '0x00',
     name: 'format',
     length: 1,
     type: 'bit',
@@ -99,7 +111,11 @@ const schema = [{
 
 const buffer = [0x03];
 
-const result = binarnia(schema, buffer);
+const result = binarnia({
+    offset: '0x00',
+    schema,
+    buffer,
+});
 // returns
 {
     format: ['MZ', 'PE'],
@@ -123,7 +139,7 @@ const schema = [{
 
 const buffer = Buffero.from([0x22, 0x01]);
 
-binarnia(schema, buffer);
+binarnia({schema, buffer});
 // returns
 {
     format: 'MZ'
@@ -147,7 +163,7 @@ const schema = [{
 
 const buffer = Buffero.from([0x22, 0x01]);
 
-binarnia(schema, buffer);
+binarnia({schema, buffer});
 // returns
 {
     arch: 'x32',
