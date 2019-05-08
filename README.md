@@ -146,6 +146,27 @@ binarnia({schema, buffer});
 };
 ```
 
+### Links
+const schema = [{
+    name: 'msg_size',
+    length: 1,
+    type: 'value',
+}, {
+    name: 'msg',
+    length: '<msg_size>',
+    type: 'string'
+}];
+
+const buffer = [0x1, 0x31];
+
+binarnia({schema, buffer});
+// returns
+{
+    msg_size: '0x01',
+    msg: '1'
+}
+```
+
 ### Array
 
 ```js
