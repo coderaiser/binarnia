@@ -1,3 +1,11 @@
+2019.05.10, v2.0.0
+
+feature:
+- (binarnia) length -> size
+- (binarnia) add links support
+- (binarnia) add ability to set offset for schema block
+
+
 2019.05.06, v1.2.1
 
 fix:
