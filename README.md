@@ -15,7 +15,7 @@ const binarnia = require('binarnia');
 const schema = [{
     offset: '0x01',
     name: 'arch',
-    length: 1,
+    size: 1,
     type: 'value',
 }];
 
@@ -59,7 +59,7 @@ binarnia({
 const schema = [{
     offset: '0x00',
     name: 'format',
-    length: 1,
+    size: 1,
     type: 'value',
 }];
 
@@ -78,7 +78,7 @@ binarnia({schema, buffer});
 const schema = [{
     offset: '0x00',
     name: 'message',
-    length: 5,
+    size: 5,
     type: 'string',
 }];
 
@@ -100,7 +100,7 @@ binarnia({
 ```js
 const schema = [{
     name: 'format',
-    length: 1,
+    size: 1,
     type: 'bit',
     bit: {
         '0x1': 'MZ',
@@ -129,7 +129,7 @@ const binarnia = require('binarnia');
 const schema = [{
     offset: '0x00',
     name: 'format',
-    length: 1,
+    size: 1,
     type: 'enum',
     enum: {
         '0x22': 'MZ',
@@ -149,11 +149,11 @@ binarnia({schema, buffer});
 ### Links
 const schema = [{
     name: 'msg_size',
-    length: 1,
+    size: 1,
     type: 'value',
 }, {
     name: 'msg',
-    length: '<msg_size>',
+    size: '<msg_size>',
     type: 'string'
 }];
 
@@ -174,7 +174,7 @@ const binarnia = require('binarnia');
 const schema = [{
     offset: '0x01',
     name: 'arch',
-    length: 1,
+    size: 1,
     type: 'array',
     array: [
         'x32',
