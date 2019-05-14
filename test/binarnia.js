@@ -40,7 +40,7 @@ test('binarnia: no buffer', (t) => {
 test('binarnia: value', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'value',
     }];
     
@@ -58,7 +58,7 @@ test('binarnia: value', (t) => {
 test('binarnia: string', (t) => {
     const schema = [{
         name: 'message',
-        length: 5,
+        size: 5,
         type: 'string',
     }];
     
@@ -81,7 +81,7 @@ test('binarnia: string', (t) => {
 test('binarnia: string: LE', (t) => {
     const schema = [{
         name: 'message',
-        length: 5,
+        size: 5,
         type: 'string',
     }];
     
@@ -103,7 +103,7 @@ test('binarnia: string: LE', (t) => {
 test('binarnia: array', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'array',
         array: [
             'MZ',
@@ -125,7 +125,7 @@ test('binarnia: array', (t) => {
 test('binarnia: enum', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'enum',
         enum: {
             '0x22': 'MZ',
@@ -147,7 +147,7 @@ test('binarnia: enum', (t) => {
 test('binarnia: enum: not found', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'enum',
         enum: {
             '0x22': 'MZ',
@@ -169,7 +169,7 @@ test('binarnia: enum: not found', (t) => {
 test('binarnia: bit', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'bit',
         bit: {
             '0x1': 'MZ',
@@ -192,7 +192,7 @@ test('binarnia: bit', (t) => {
 test('binarnia: bit: direct', (t) => {
     const schema = [{
         name: 'format',
-        length: 1,
+        size: 1,
         type: 'bit',
         bit: {
             '0x1': 'MZ',
@@ -214,7 +214,7 @@ test('binarnia: bit: direct', (t) => {
 test('binarnia: LE', (t) => {
     const schema = [{
         name: 'format',
-        length: 4,
+        size: 4,
         type: 'value',
     }];
     
@@ -229,14 +229,14 @@ test('binarnia: LE', (t) => {
     t.end();
 });
 
-test('binarnia: link to length', (t) => {
+test('binarnia: link to size', (t) => {
     const schema = [{
-        name: 'label_length',
-        length: 1,
+        name: 'label_size',
+        size: 1,
         type: 'value',
     }, {
         name: 'label',
-        length: '<label_length>',
+        size: '<label_size>',
         type: 'string',
     }];
     
@@ -244,7 +244,7 @@ test('binarnia: link to length', (t) => {
     
     const result = binarnia({schema, buffer});
     const expected = {
-        label_length: '0x3',
+        label_size: '0x3',
         label: '123',
     };
     
@@ -255,7 +255,7 @@ test('binarnia: link to length', (t) => {
 test('binarnia: BE', (t) => {
     const schema = [{
         name: 'format',
-        length: 4,
+        size: 4,
         type: 'value',
     }];
     
@@ -279,7 +279,7 @@ test('binarnia: not defined', (t) => {
     const schema = [{
         offset: '0x0',
         name: 'format',
-        length: 4,
+        size: 4,
         type: 'super',
     }];
     
