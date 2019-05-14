@@ -24,6 +24,11 @@
     "watch:coverage": "madrun watch:coverage",
     "legacy:index": "madrun legacy:index"
   },
+  "nyc": {
+    "include": [
+      "lib"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/binarnia.git"
