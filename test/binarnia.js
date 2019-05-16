@@ -295,3 +295,27 @@ test('binarnia: not defined', (t) => {
     t.end();
 });
 
+test('binarnia: sizeof', (t) => {
+    const result = binarnia.sizeof([{
+        name: 'a',
+        size: 4,
+        type: 'value',
+    }, {
+        name: 'b',
+        size: 4,
+        type: 'value',
+    }]);
+    
+    const expected = 8;
+    
+    t.equal(result, expected);
+    t.end();
+});
+
+test('binarnia: sizeof: no args', (t) => {
+    const [e] = tryCatch(binarnia.sizeof);
+    
+    t.equal(e.message, 'schema should be an array!');
+    t.end();
+});
+

@@ -191,6 +191,24 @@ binarnia({schema, buffer});
 };
 ```
 
+### sizeof(schema)
+
+```
+const schema = [{
+    name: 'a',
+    size: 4,
+    type: 'value',
+}, {
+    name: 'b',
+    size: 4,
+    type: 'value',
+}];
+
+binarnia.sizeof(schema);
+// returns
+8
+```
+
 ## Environments
 
 In old `node.js` environments that not fully supports `es2015`, `binarnia` could be used with:
