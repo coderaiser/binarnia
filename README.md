@@ -195,7 +195,7 @@ binarnia({schema, buffer});
 
 ### sizeof(schema)
 
-```
+```js
 const schema = [{
     name: 'a',
     size: 4,
