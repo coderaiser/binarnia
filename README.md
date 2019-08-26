@@ -147,6 +147,8 @@ binarnia({schema, buffer});
 ```
 
 ### Links
+
+```js
 const schema = [{
     name: 'msg_size',
     size: 1,
