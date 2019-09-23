@@ -334,6 +334,23 @@ test('binarnia: sizeof', (t) => {
     t.end();
 });
 
+test('binarnia: sizeof: links', (t) => {
+    const result = binarnia.sizeof([{
+        name: 'size',
+        size: 4,
+        type: 'value',
+    }, {
+        name: 'b',
+        size: '<size>',
+        type: 'value',
+    }]);
+    
+    const expected = 4;
+    
+    t.equal(result, expected);
+    t.end();
+});
+
 test('binarnia: sizeof: no args', (t) => {
     const [e] = tryCatch(binarnia.sizeof);
     
