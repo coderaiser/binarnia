@@ -59,7 +59,7 @@
     "try-catch": "^2.0.0"
   },
   "dependencies": {
-    "currify": "^3.0.0",
+    "currify": "^4.0.0",
     "read-uint": "^1.1.0"
   },
   "publishConfig": {
