@@ -229,6 +229,28 @@ test('binarnia: LE', (t) => {
     t.end();
 });
 
+test('binarnia: ignore', (t) => {
+    const schema = [{
+        name: 'format',
+        size: 2,
+        type: 'value',
+    }, {
+        name: 'reserved',
+        size: 2,
+        type: 'ignore',
+    }];
+    
+    const buffer = [0x01, 0x02, 0x03, 0x04];
+    
+    const result = binarnia({schema, buffer});
+    const expected = {
+        format: '0x201',
+    };
+    
+    t.deepEqual(result, expected, 'should equal');
+    t.end();
+});
+
 test('binarnia: link to size', (t) => {
     const schema = [{
         name: 'label_size',

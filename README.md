@@ -193,6 +193,28 @@ binarnia({schema, buffer});
 };
 ```
 
+### Ignore
+
+```js
+const schema = [{
+    name: 'format',
+    size: 2,
+    type: 'value',
+}, {
+    name: 'reserved',
+    size: 2,
+    type: 'ignore',
+}];
+
+const buffer = [0x01, 0x02, 0x03, 0x04];
+
+binarnia({schema, buffer});
+// returns
+
+{
+    format: '0x201',
+};
+
 ### sizeof(schema)
 
 ```js
