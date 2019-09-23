@@ -1,6 +1,6 @@
 {
   "name": "binarnia",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "parse binary buffer to json according to schema",
   "main": "lib/binarnia.js",
   "scripts": {
