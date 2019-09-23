@@ -48,7 +48,7 @@
     "babel-cli": "^6.1.1",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "eslint": "^5.0.0",
+    "eslint": "^6.4.0",
     "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-putout": "^1.4.4",
     "madrun": "^2.1.2",
