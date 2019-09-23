@@ -211,14 +211,6 @@ binarnia.sizeof(schema);
 8
 ```
 
-## Environments
-
-In old `node.js` environments that not fully supports `es2015`, `binarnia` could be used with:
-
-```js
-var binarnia = require('binarnia/legacy');
-```
-
 ## License
 
 MIT

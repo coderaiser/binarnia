@@ -6,23 +6,16 @@
   "scripts": {
     "test": "madrun test",
     "coverage": "madrun coverage",
-    "eslint": "madrun eslint",
-    "putout": "madrun putout",
     "lint": "madrun lint",
     "fix:lint": "madrun fix:lint",
     "report": "madrun report",
-    "build": "madrun build",
-    "6to5": "madrun 6to5",
-    "wisdom": "madrun wisdom",
-    "clean": "madrun clean",
     "watcher": "madrun watcher",
     "watch:test": "madrun watch:test",
     "watch:lint": "madrun watch:lint",
     "watch:tape": "madrun watch:tape",
     "watch:coverage:base": "madrun watch:coverage:base",
     "watch:coverage:tape": "madrun watch:coverage:tape",
-    "watch:coverage": "madrun watch:coverage",
-    "legacy:index": "madrun legacy:index"
+    "watch:coverage": "madrun watch:coverage"
   },
   "nyc": {
     "include": [
@@ -45,8 +38,6 @@
   },
   "homepage": "https://github.com/coderaiser/binarnia",
   "devDependencies": {
-    "babel-cli": "^6.1.1",
-    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
     "eslint": "^6.4.0",
     "eslint-plugin-node": "^10.0.0",
@@ -55,9 +46,11 @@
     "nodemon": "^1.11.0",
     "nyc": "^14.1.0",
     "putout": "^6.1.0",
-    "rimraf": "^2.4.3",
     "supertape": "^1.2.3",
     "try-catch": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=8"
   },
   "dependencies": {
     "currify": "^4.0.0",
