@@ -1,3 +1,15 @@
+2020.04.16, v3.1.2
+
+feature:
+- (package) nodemon v2.0.3
+- (package) madrun v5.4.5
+- (package) putout v7.22.0
+- (package) eslint-plugin-putout v3.5.0
+- (package) eslint-plugin-node v11.1.0
+- (package) nyc v15.0.1
+- (package) try-catch v3.0.0
+
+
 2019.09.23, v3.1.1
 
 fix:
