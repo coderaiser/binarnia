@@ -1,3 +1,14 @@
+2020.07.03, v3.1.3
+
+feature:
+- (package) read-uint v2.0.0
+- (package) supertape v2.0.1
+- (package) putout v9.1.0
+- (package) madrun v7.0.0
+- (package) eslint-plugin-putout v5.0.1
+- (package) eslint v7.3.1
+
+
 2020.04.16, v3.1.2
 
 feature:
