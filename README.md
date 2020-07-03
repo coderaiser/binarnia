@@ -214,6 +214,7 @@ binarnia({schema, buffer});
 {
     format: '0x201',
 };
+```
 
 ### sizeof(schema)
 
