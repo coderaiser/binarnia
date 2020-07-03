@@ -137,7 +137,7 @@ const schema = [{
     }
 }];
 
-const buffer = Buffero.from([0x22, 0x01]);
+const buffer = Buffer.from([0x22, 0x01]);
 
 binarnia({schema, buffer});
 // returns
@@ -184,7 +184,7 @@ const schema = [{
     ]
 }];
 
-const buffer = Buffero.from([0x22, 0x01]);
+const buffer = Buffer.from([0x22, 0x01]);
 
 binarnia({schema, buffer});
 // returns
@@ -210,7 +210,6 @@ const buffer = [0x01, 0x02, 0x03, 0x04];
 
 binarnia({schema, buffer});
 // returns
-
 {
     format: '0x201',
 };
