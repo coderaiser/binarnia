@@ -38,7 +38,7 @@
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-node": "^11.1.0",
     "madrun": "^9.4.0",
-    "nodemon": "^2.0.3",
+    "nodemon": "^3.0.1",
     "putout": "^32.4.0",
     "supertape": "^8.6.0",
     "try-catch": "^3.0.0"
