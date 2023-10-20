@@ -17,11 +17,6 @@
     "watch:coverage:tape": "madrun watch:coverage:tape",
     "watch:coverage": "madrun watch:coverage"
   },
-  "nyc": {
-    "include": [
-      "lib"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/coderaiser/binarnia.git"
@@ -43,10 +38,8 @@
     "eslint": "^8.51.0",
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-putout": "^20.0.0",
-    "madrun": "^7.0.0",
+    "madrun": "^9.4.0",
     "nodemon": "^2.0.3",
-    "nyc": "^15.0.1",
     "putout": "^32.4.0",
     "supertape": "^2.0.1",
     "try-catch": "^3.0.0"
