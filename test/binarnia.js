@@ -50,8 +50,31 @@ test('binarnia: value', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: '0x33',
+    };
+    
+    t.deepEqual(result, expected);
+    t.end();
+});
+
+test('binarnia: decimal', (t) => {
+    const schema = [{
+        name: 'format',
+        size: 1,
+        type: 'decimal',
+    }];
+    
+    const buffer = [0x33];
+    
+    const result = binarnia({
+        schema,
+        buffer,
+    });
+    
+    const expected = {
+        format: parseInt('0x33', 16),
     };
     
     t.deepEqual(result, expected);
@@ -136,6 +159,7 @@ test('binarnia: array', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: 'MZ',
     };
@@ -161,6 +185,7 @@ test('binarnia: enum', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: 'MZ',
     };
@@ -186,6 +211,7 @@ test('binarnia: enum: not found', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: '0x44',
     };
@@ -212,6 +238,7 @@ test('binarnia: bit', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: ['MZ', 'PE'],
     };
@@ -237,6 +264,7 @@ test('binarnia: bit: direct', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: ['PE'],
     };
@@ -263,6 +291,7 @@ test('binarnia: LE', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: '0x4030201',
     };
@@ -293,6 +322,7 @@ test('binarnia: ignore', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         format: '0x201',
     };
@@ -323,6 +353,7 @@ test('binarnia: link to size', (t) => {
         schema,
         buffer,
     });
+    
     const expected = {
         label_size: '0x3',
         label: '123',
@@ -374,6 +405,7 @@ test('binarnia: not defined', (t) => {
         0x03,
         0x04,
     ];
+    
     const [error] = tryCatch(binarnia, {
         schema,
         buffer,
