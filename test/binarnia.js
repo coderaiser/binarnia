@@ -46,12 +46,15 @@ test('binarnia: value', (t) => {
     
     const buffer = [0x33];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: '0x33',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -62,7 +65,15 @@ test('binarnia: string', (t) => {
         type: 'string',
     }];
     
-    const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
+    const buffer = [
+        0x68,
+        0x65,
+        0x6c,
+        0x6c,
+        0x6f,
+        0x27,
+        0x00,
+    ];
     
     const result = binarnia({
         schema,
@@ -74,7 +85,7 @@ test('binarnia: string', (t) => {
         message: 'hello',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -85,7 +96,15 @@ test('binarnia: string: LE', (t) => {
         type: 'string',
     }];
     
-    const buffer = [0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x27, 0x00];
+    const buffer = [
+        0x68,
+        0x65,
+        0x6c,
+        0x6c,
+        0x6f,
+        0x27,
+        0x00,
+    ];
     
     const result = binarnia({
         schema,
@@ -96,7 +115,7 @@ test('binarnia: string: LE', (t) => {
         message: 'hello',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -113,12 +132,15 @@ test('binarnia: array', (t) => {
     
     const buffer = [0x00];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: 'MZ',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -135,12 +157,15 @@ test('binarnia: enum', (t) => {
     
     const buffer = [0x22];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: 'MZ',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -157,12 +182,15 @@ test('binarnia: enum: not found', (t) => {
     
     const buffer = [0x44];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: '0x44',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -180,12 +208,15 @@ test('binarnia: bit', (t) => {
     
     const buffer = [0x03];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: ['MZ', 'PE'],
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -202,12 +233,15 @@ test('binarnia: bit: direct', (t) => {
     
     const buffer = [0x02];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: ['PE'],
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -218,14 +252,22 @@ test('binarnia: LE', (t) => {
         type: 'value',
     }];
     
-    const buffer = [0x01, 0x02, 0x03, 0x04];
+    const buffer = [
+        0x01,
+        0x02,
+        0x03,
+        0x04,
+    ];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: '0x4030201',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -240,14 +282,22 @@ test('binarnia: ignore', (t) => {
         type: 'ignore',
     }];
     
-    const buffer = [0x01, 0x02, 0x03, 0x04];
+    const buffer = [
+        0x01,
+        0x02,
+        0x03,
+        0x04,
+    ];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         format: '0x201',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -262,15 +312,23 @@ test('binarnia: link to size', (t) => {
         type: 'string',
     }];
     
-    const buffer = [0x03, 0x31, 0x32, 0x33];
+    const buffer = [
+        0x03,
+        0x31,
+        0x32,
+        0x33,
+    ];
     
-    const result = binarnia({schema, buffer});
+    const result = binarnia({
+        schema,
+        buffer,
+    });
     const expected = {
         label_size: '0x3',
         label: '123',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -281,7 +339,12 @@ test('binarnia: BE', (t) => {
         type: 'value',
     }];
     
-    const buffer = [0x01, 0x02, 0x03, 0x04];
+    const buffer = [
+        0x01,
+        0x02,
+        0x03,
+        0x04,
+    ];
     
     const result = binarnia({
         schema,
@@ -293,7 +356,7 @@ test('binarnia: BE', (t) => {
         format: '0x1020304',
     };
     
-    t.deepEqual(result, expected, 'should equal');
+    t.deepEqual(result, expected);
     t.end();
 });
 
@@ -305,15 +368,19 @@ test('binarnia: not defined', (t) => {
         type: 'super',
     }];
     
-    const buffer = [0x01, 0x02, 0x03, 0x04];
-    
-    const fn = () => binarnia({
+    const buffer = [
+        0x01,
+        0x02,
+        0x03,
+        0x04,
+    ];
+    const [error] = tryCatch(binarnia, {
         schema,
         buffer,
         endian: 'BE',
     });
     
-    t.throws(fn, /0x0: format: behaviour of type "super" is not defined/, 'should throw');
+    t.equal(error.message, '0x0: format: behaviour of type "super" is not defined', 'should throw');
     t.end();
 });
 
@@ -357,4 +424,3 @@ test('binarnia: sizeof: no args', (t) => {
     t.equal(e.message, 'schema should be an array!');
     t.end();
 });
-
