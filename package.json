@@ -42,7 +42,7 @@
     "madrun": "^9.4.0",
     "nodemon": "^3.0.1",
     "putout": "^38.1.2",
-    "supertape": "^8.6.0",
+    "supertape": "^10.10.0",
     "try-catch": "^3.0.0"
   },
   "engines": {
