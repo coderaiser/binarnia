@@ -456,3 +456,30 @@ test('binarnia: sizeof: no args', (t) => {
     t.equal(e.message, 'schema should be an array!');
     t.end();
 });
+
+test('binarnia: endian: wrong', (t) => {
+    const schema = [{
+        name: 'message',
+        size: 5,
+        type: 'string',
+    }];
+    
+    const buffer = [
+        0x68,
+        0x65,
+        0x6c,
+        0x6c,
+        0x6f,
+        0x27,
+        0x00,
+    ];
+    
+    const [error] = tryCatch(binarnia, {
+        schema,
+        endian: 'AAAA',
+        buffer,
+    });
+    
+    t.equal(error.message, `endian should be 'BE' or 'LE', received: 'AAAA'`);
+    t.end();
+});
