@@ -35,7 +35,7 @@
   "homepage": "https://github.com/coderaiser/binarnia",
   "devDependencies": {
     "c8": "^8.0.1",
-    "eslint": "^8.51.0",
+    "eslint": "^9.20.0",
     "eslint-plugin-n": "^16.2.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-putout": "^24.0.2",
